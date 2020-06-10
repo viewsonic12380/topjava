@@ -9,7 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -26,7 +25,7 @@ public class MealServlet extends HttpServlet {
 //        response.sendRedirect("meals.jsp");
         Model model = Model.getInstance();
         List<MealTo> list = model.list();
-        request.setAttribute("Meals",list);
+        request.setAttribute("Meals", list);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/meals.jsp");
         requestDispatcher.forward(request, response);
