@@ -1,9 +1,26 @@
 package ru.javawebinar.topjava.service;
 
-import ru.javawebinar.topjava.repository.MealRepository;
+import org.springframework.lang.Nullable;
+import ru.javawebinar.topjava.model.Meal;
 
-public class MealService {
+import java.time.LocalDate;
+import java.util.List;
 
-    private MealRepository repository;
+public interface MealService {
+
+//    public class MealService {
+//    private MealRepository repository;
+
+    Meal get(int id, int userId);
+
+    void delete(int id, int userId);
+
+    List<Meal> getBetweenDates(@Nullable LocalDate startDate, @Nullable LocalDate endDate, int userId);
+
+    List<Meal> getAll(int userId);
+
+    void update(Meal meal, int userId);
+
+    Meal create(Meal meal, int userId);
 
 }
