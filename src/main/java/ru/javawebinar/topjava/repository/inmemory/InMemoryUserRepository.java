@@ -1,5 +1,6 @@
 package ru.javawebinar.topjava.repository.inmemory;
 
+import org.graalvm.compiler.lir.LIRInstruction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -42,7 +43,11 @@ public class InMemoryUserRepository implements UserRepository {
 
     @Override
     public User getByEmail(String email) {
-        log.info("getByEmail {}", email);
+        for (Map.Entry<Integer, User> entry:repository.entrySet()){
+            if (entry.getValue().getEmail().equals(email)) {
+                return entry.getValue();
+            }
+        }
         return null;
     }
 }
