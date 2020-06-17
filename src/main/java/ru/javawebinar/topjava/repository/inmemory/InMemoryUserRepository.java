@@ -1,14 +1,11 @@
 package ru.javawebinar.topjava.repository.inmemory;
 
-import org.graalvm.compiler.lir.LIRInstruction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import ru.javawebinar.topjava.model.AbstractNamedEntity;
-import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.repository.UserRepository;
-import ru.javawebinar.topjava.util.NameComparator;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -20,7 +17,7 @@ public class InMemoryUserRepository implements UserRepository {
 
     @Override
     public boolean delete(int id) {
-        return repository.remove(id)!=null;
+        return repository.remove(id) != null;
     }
 
     @Override
@@ -43,7 +40,7 @@ public class InMemoryUserRepository implements UserRepository {
 
     @Override
     public User getByEmail(String email) {
-        for (Map.Entry<Integer, User> entry:repository.entrySet()){
+        for (Map.Entry<Integer, User> entry : repository.entrySet()) {
             if (entry.getValue().getEmail().equals(email)) {
                 return entry.getValue();
             }
